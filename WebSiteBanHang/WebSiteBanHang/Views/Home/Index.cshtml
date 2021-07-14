@@ -1,0 +1,43 @@
+﻿@using WebSiteBanHang.Models;
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@*buoc 1 tach code va long partial view*@
+
+@{
+    IEnumerable<SanPham> lstDTM = (IEnumerable<SanPham>)ViewBag.ListDTM;
+    IEnumerable<SanPham> lstLTM = ViewBag.ListLTM as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstMTB = ViewBag.ListMTB as IEnumerable<SanPham>;
+}
+<div class="content-top">
+    <h1>Điện thoại mới nhất</h1>
+    <div class="grid-in">
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/SanPhamStyle1Partial.cshtml", lstDTM)
+        </div>
+    </div>
+
+
+    <h1>Laptop ưu chuộng nhất</h1>
+    <div class="grid-in">
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/SanPhamStyle2Partial.cshtml", lstLTM)
+        </div>
+    </div>
+
+
+    <h1>Máy tính bảng bán chạy nhất</h1>
+    <div class="grid-in">
+        <div class="container">
+            @Html.Partial("~/Views/SanPham/SanPhamStyle1Partial.cshtml", lstMTB)
+        </div>
+    </div>
+
+</div>
+
+@* Buoc 2 gan du lieu tu controller thong qua viewbag vap partial view*@
+
+

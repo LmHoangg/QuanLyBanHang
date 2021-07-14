@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Demo";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<div id="Content">
+    <!--<div class="row">-->
+    <!-- md lon,xs dt,sm mtbang-->
+    <!--<div class="col-md-2">
+        Cột 1
+    </div>
+    <div class="col-md-2">
+        Cột 2
+    </div>
+    <div class="col-md-2">
+        Cột 3
+    </div>
+    <div class="col-md-2">
+        Cột 4
+    </div>
+    <div class="col-md-2">
+        Cột 5
+    </div>
+    <div class="col-md-2">
+        Cột 6
+    </div>-->
+    <input type="button" name="" value="Đăng nhập" class="btn btn-primary" id="btnDangNhap" style="font-size:40px;" />
+    <div id="popup_login">
+        <div class="form-group">
+            <div class="login-form">
+                <div style="text-align:right;margin-bottom:0;position:absolute;top:20px;right:20px;font-size:25px">
+                    <span id="close-form" class="btn btn-danger">X</span>
+                </div>
+                <h2>Đăng nhập</h2>
+                <div class="form-info">
+                    <form>
+                        <input type="text" class="email" placeholder="Tên đăng nhập" required="" />
+                        <input type="password" class="password" placeholder="Mật khẩu" required="" />
+                        <p><a href="#">Quên mật khẩu ?</a></p>
+                        <ul class="login-buttons">
+                            <li><input type="submit" value="Đăng nhập" /></li>
+                            <li><a href="#" style="text-decoration:none;" class="hvr-sweep-to-left">Đăng ký</a></li>
+                            <div class="clear"> </div>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+            <!--copyrights-->
+            @* <div class="copyrights">
+                    <p>Template by <a href="http://w3layouts.com">w3layouts</a></p>
+                </div>*@
+        </div>
+    </div>
+</div> 
+<style>
+    #Content{
+        height:600px;
+    }
+    .copyrights{
+        @*width:100%;*@
+    }
+    #popup_login {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-color:rgba(0,0,0,.5);
+        z-index:99;
+        display:none;
+    }
+    .form-group {
+        width:600px;
+        height:460px;
+        margin: 0 auto;
+    }
+</style>
+<!-- Su dung Jquery-->
+<script type="text/javascript">
+
+    // hien thi
+    $("#btnDangNhap").click(function () {
+       @* $("#popup_login").css("display", "block");*@
+        @*$("#popup_login").show();*@
+        @* $("#popup_login").fadeIn(500);*@
+        $("#popup_login").slideDown();
+    })
+    // An di
+    $("#close-form").click(function () {
+        $("#popup_login").hide(500);
+    })
+</script>

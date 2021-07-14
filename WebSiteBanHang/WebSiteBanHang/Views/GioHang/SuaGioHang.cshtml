@@ -1,0 +1,78 @@
+﻿@using WebSiteBanHang.Models
+@model ItemGioHang
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+@{
+    List<ItemGioHang> lstGioHang = ViewBag.GioHang as List<ItemGioHang>;
+
+}
+<div class="col-md-9 product-price1">
+    <table class="table" border="1" style="font-family:'Segoe UI';font-size:18px;text-align:center;">
+        <tr style="text-align:center;color:red;">
+            <td>Mã sản phẩm</td>
+            <td>Tên sản phẩm</td>
+            <td>Hình ảnh</td>
+            <td>Số lượng</td>
+            <td>Đơn giá</td>
+            <td>Thành tiền</td>
+        </tr>
+        @foreach (var item in lstGioHang)
+        {
+            // Sản phẩm có mã sp đc chỉnh sửa gửi tham số bên trang xem giỏ hàng
+            if (Model.MaSP == item.MaSP)
+            {
+
+                using (Html.BeginForm("CapNhatGioHang", "GioHang"))
+                {
+                   
+  
+                    <tr>
+                        <td >@item.MaSP @Html.Hidden("MaSP", item.MaSP)</td>
+                        <td style="text-align:left;">@item.TenSP</td>
+                        <td style="text-align:left;"><img src="@Url.Content("~/Content/HinhAnh/"+item.HinhAnh)" style="width:150px;height:85px"/></td>
+                        <td>
+                            @Html.TextBox("SoLuong", item.SoLuong, new { @class = "SoLuongThayDoi", style="width:80%;"})
+                            <p id="TB_SoLuongThayDoi"></p>
+                        </td>
+                        <td>@item.DonGia.ToString("#,##")</td>
+                        <td style="font-weight:600;color:red;">@item.ThanhTien.ToString("#,##")</td>
+                        <td style="text-align:center;">
+                            <input type="submit" value="Cập Nhật" id="btnCapNhatGH" style="width:150%; font-size:15px;text-align:center; padding-left:0; padding-right:0;margin-right: 0;"/>               
+                            @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP },new { style="margin-left:27px;"})
+                        </td>
+                    </tr>
+
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td style="text-align:left;">@item.TenSP</td>
+                    <td style="text-align:left;"><img src="@Url.Content("~/Content/HinhAnh/"+item.HinhAnh)" style="width:150px;height:85px"/></td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.DonGia.ToString("#,##")</td>
+                    <td style="font-weight:600;color:red;">@item.ThanhTien.ToString("#,##")</td>
+                    <td>
+                        @Html.ActionLink("Sửa", "SuaGioHang", new { @MaSP = item.MaSP })
+                        @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+</div>
+
+@* Kiem Tra số lượng âm và chữ*@
+<script>
+    $("btnCapNhatGH").click(function () {
+        var soLuong = $(".SoLuongThayDoi").val();
+        if (isNaN(soLuong) == true || soLuong < 0) {
+            $("#TB_SoLuongThayDoi").text("Số lượng không hợp lệ").css("color", "red");
+            return false;
+        }
+    })
+</script>

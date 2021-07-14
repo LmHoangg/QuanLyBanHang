@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyBanHangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="QuanLyBanHangEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BinhLuan" EntityType="QuanLyBanHangModel.BinhLuan" />
+    <EntitySet Name="ChiTietDonDatHang" EntityType="QuanLyBanHangModel.ChiTietDonDatHang" />
+    <EntitySet Name="ChiTietPN" EntityType="QuanLyBanHangModel.ChiTietPN" />
+    <EntitySet Name="DonDatHang" EntityType="QuanLyBanHangModel.DonDatHang" />
+    <EntitySet Name="KhachHang" EntityType="QuanLyBanHangModel.KhachHang" />
+    <EntitySet Name="LoaiSanPham" EntityType="QuanLyBanHangModel.LoaiSanPham" />
+    <EntitySet Name="LoaiThanhVien" EntityType="QuanLyBanHangModel.LoaiThanhVien" />
+    <EntitySet Name="NhaCungCap" EntityType="QuanLyBanHangModel.NhaCungCap" />
+    <EntitySet Name="NhaSanXuat" EntityType="QuanLyBanHangModel.NhaSanXuat" />
+    <EntitySet Name="PhieuNhap" EntityType="QuanLyBanHangModel.PhieuNhap" />
+    <EntitySet Name="SanPham" EntityType="QuanLyBanHangModel.SanPham" />
+    <EntitySet Name="ThanhVien" EntityType="QuanLyBanHangModel.ThanhVien" />
+    <AssociationSet Name="FK_BinhLuan_ToTable" Association="QuanLyBanHangModel.FK_BinhLuan_ToTable">
+      <End Role="ThanhVien" EntitySet="ThanhVien" />
+      <End Role="BinhLuan" EntitySet="BinhLuan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BinhLuan_ToTable_1" Association="QuanLyBanHangModel.FK_BinhLuan_ToTable_1">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="BinhLuan" EntitySet="BinhLuan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietDonDatHang_ToTable" Association="QuanLyBanHangModel.FK_ChiTietDonDatHang_ToTable">
+      <End Role="DonDatHang" EntitySet="DonDatHang" />
+      <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietDonDatHang_ToTable_1" Association="QuanLyBanHangModel.FK_ChiTietDonDatHang_ToTable_1">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTietDonDatHang" EntitySet="ChiTietDonDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietPN_ToTable" Association="QuanLyBanHangModel.FK_ChiTietPN_ToTable">
+      <End Role="SanPham" EntitySet="SanPham" />
+      <End Role="ChiTietPN" EntitySet="ChiTietPN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietPN_ToTable_1" Association="QuanLyBanHangModel.FK_ChiTietPN_ToTable_1">
+      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+      <End Role="ChiTietPN" EntitySet="ChiTietPN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Đo_ToTable" Association="QuanLyBanHangModel.FK_Đo_ToTable">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="DonDatHang" EntitySet="DonDatHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_ToTable" Association="QuanLyBanHangModel.FK_Table_ToTable">
+      <End Role="ThanhVien" EntitySet="ThanhVien" />
+      <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_ToTable" Association="QuanLyBanHangModel.FK_SanPham_ToTable">
+      <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThanhVien_ToTable" Association="QuanLyBanHangModel.FK_ThanhVien_ToTable">
+      <End Role="LoaiThanhVien" EntitySet="LoaiThanhVien" />
+      <End Role="ThanhVien" EntitySet="ThanhVien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNhap_ToTable" Association="QuanLyBanHangModel.FK_PhieuNhap_ToTable">
+      <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+      <End Role="PhieuNhap" EntitySet="PhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_ToTable_1" Association="QuanLyBanHangModel.FK_SanPham_ToTable_1">
+      <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_ToTable_2" Association="QuanLyBanHangModel.FK_SanPham_ToTable_2">
+      <End Role="NhaSanXuat" EntitySet="NhaSanXuat" />
+      <End Role="SanPham" EntitySet="SanPham" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BinhLuan">
+    <Key>
+      <PropertyRef Name="MaBL" />
+    </Key>
+    <Property Name="MaBL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NoiDungBL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaThanhVien" Type="Int32" />
+    <Property Name="MaSP" Type="Int32" />
+    <NavigationProperty Name="ThanhVien" Relationship="QuanLyBanHangModel.FK_BinhLuan_ToTable" FromRole="BinhLuan" ToRole="ThanhVien" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_BinhLuan_ToTable_1" FromRole="BinhLuan" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="ChiTietDonDatHang">
+    <Key>
+      <PropertyRef Name="MaChiTietDDH" />
+    </Key>
+    <Property Name="MaChiTietDDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDDH" Type="Int32" />
+    <Property Name="MaSP" Type="Int32" />
+    <Property Name="TenSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="DonDatHang" Relationship="QuanLyBanHangModel.FK_ChiTietDonDatHang_ToTable" FromRole="ChiTietDonDatHang" ToRole="DonDatHang" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_ChiTietDonDatHang_ToTable_1" FromRole="ChiTietDonDatHang" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="ChiTietPN">
+    <Key>
+      <PropertyRef Name="MaChiTietPN" />
+    </Key>
+    <Property Name="MaChiTietPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaSP" Type="Int32" />
+    <Property Name="MaPN" Type="Int32" />
+    <Property Name="DonGiaNhap" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SoLuongNhap" Type="Int32" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_ChiTietPN_ToTable" FromRole="ChiTietPN" ToRole="SanPham" />
+    <NavigationProperty Name="PhieuNhap" Relationship="QuanLyBanHangModel.FK_ChiTietPN_ToTable_1" FromRole="ChiTietPN" ToRole="PhieuNhap" />
+  </EntityType>
+  <EntityType Name="DonDatHang">
+    <Key>
+      <PropertyRef Name="MaDDH" />
+    </Key>
+    <Property Name="MaDDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayDat" Type="DateTime" Precision="3" />
+    <Property Name="TinhTrangGiaoHang" Type="Boolean" />
+    <Property Name="NgayGiao" Type="DateTime" Precision="3" />
+    <Property Name="DaThanhToan" Type="Boolean" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="UuDai" Type="Int32" />
+    <Property Name="DaHuy" Type="Boolean" />
+    <Property Name="DaXoa" Type="Boolean" />
+    <NavigationProperty Name="ChiTietDonDatHang" Relationship="QuanLyBanHangModel.FK_ChiTietDonDatHang_ToTable" FromRole="DonDatHang" ToRole="ChiTietDonDatHang" />
+    <NavigationProperty Name="KhachHang" Relationship="QuanLyBanHangModel.FK_Đo_ToTable" FromRole="DonDatHang" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaThanhVien" Type="Int32" />
+    <NavigationProperty Name="DonDatHang" Relationship="QuanLyBanHangModel.FK_Đo_ToTable" FromRole="KhachHang" ToRole="DonDatHang" />
+    <NavigationProperty Name="ThanhVien" Relationship="QuanLyBanHangModel.FK_Table_ToTable" FromRole="KhachHang" ToRole="ThanhVien" />
+  </EntityType>
+  <EntityType Name="LoaiSanPham">
+    <Key>
+      <PropertyRef Name="MaLoaiSP" />
+    </Key>
+    <Property Name="MaLoaiSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BiDanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_SanPham_ToTable" FromRole="LoaiSanPham" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="LoaiThanhVien">
+    <Key>
+      <PropertyRef Name="MaLoaiTV" />
+    </Key>
+    <Property Name="MaLoaiTV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UuDai" Type="Int32" />
+    <NavigationProperty Name="ThanhVien" Relationship="QuanLyBanHangModel.FK_ThanhVien_ToTable" FromRole="LoaiThanhVien" ToRole="ThanhVien" />
+  </EntityType>
+  <EntityType Name="NhaCungCap">
+    <Key>
+      <PropertyRef Name="MaNCC" />
+    </Key>
+    <Property Name="MaNCC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNCC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuNhap" Relationship="QuanLyBanHangModel.FK_PhieuNhap_ToTable" FromRole="NhaCungCap" ToRole="PhieuNhap" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_SanPham_ToTable_1" FromRole="NhaCungCap" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="NhaSanXuat">
+    <Key>
+      <PropertyRef Name="MaNSX" />
+    </Key>
+    <Property Name="MaNSX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNSX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ThongTin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPham" Relationship="QuanLyBanHangModel.FK_SanPham_ToTable_2" FromRole="NhaSanXuat" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="PhieuNhap">
+    <Key>
+      <PropertyRef Name="MaPN" />
+    </Key>
+    <Property Name="MaPN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaNCC" Type="Int32" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+    <Property Name="DaXoa" Type="Boolean" />
+    <NavigationProperty Name="ChiTietPN" Relationship="QuanLyBanHangModel.FK_ChiTietPN_ToTable_1" FromRole="PhieuNhap" ToRole="ChiTietPN" />
+    <NavigationProperty Name="NhaCungCap" Relationship="QuanLyBanHangModel.FK_PhieuNhap_ToTable" FromRole="PhieuNhap" ToRole="NhaCungCap" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DonGia" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="NgayCapNhap" Type="DateTime" Precision="3" />
+    <Property Name="CauHinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuongTon" Type="Int32" />
+    <Property Name="LuotXem" Type="Int32" />
+    <Property Name="LuotBinhChon" Type="Int32" />
+    <Property Name="LuotBinhLuan" Type="Int32" />
+    <Property Name="SoLanMua" Type="Int32" />
+    <Property Name="Moi" Type="Int32" />
+    <Property Name="MaNCC" Type="Int32" />
+    <Property Name="MaNSX" Type="Int32" />
+    <Property Name="MaLoaiSP" Type="Int32" />
+    <Property Name="DaXoa" Type="Boolean" />
+    <Property Name="HinhAnh1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BinhLuan" Relationship="QuanLyBanHangModel.FK_BinhLuan_ToTable_1" FromRole="SanPham" ToRole="BinhLuan" />
+    <NavigationProperty Name="ChiTietDonDatHang" Relationship="QuanLyBanHangModel.FK_ChiTietDonDatHang_ToTable_1" FromRole="SanPham" ToRole="ChiTietDonDatHang" />
+    <NavigationProperty Name="ChiTietPN" Relationship="QuanLyBanHangModel.FK_ChiTietPN_ToTable" FromRole="SanPham" ToRole="ChiTietPN" />
+    <NavigationProperty Name="LoaiSanPham" Relationship="QuanLyBanHangModel.FK_SanPham_ToTable" FromRole="SanPham" ToRole="LoaiSanPham" />
+    <NavigationProperty Name="NhaCungCap" Relationship="QuanLyBanHangModel.FK_SanPham_ToTable_1" FromRole="SanPham" ToRole="NhaCungCap" />
+    <NavigationProperty Name="NhaSanXuat" Relationship="QuanLyBanHangModel.FK_SanPham_ToTable_2" FromRole="SanPham" ToRole="NhaSanXuat" />
+  </EntityType>
+  <EntityType Name="ThanhVien">
+    <Key>
+      <PropertyRef Name="MaThanhVien" />
+    </Key>
+    <Property Name="MaThanhVien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CauHoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaLoaiTV" Type="Int32" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CauTraLoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BinhLuan" Relationship="QuanLyBanHangModel.FK_BinhLuan_ToTable" FromRole="ThanhVien" ToRole="BinhLuan" />
+    <NavigationProperty Name="KhachHang" Relationship="QuanLyBanHangModel.FK_Table_ToTable" FromRole="ThanhVien" ToRole="KhachHang" />
+    <NavigationProperty Name="LoaiThanhVien" Relationship="QuanLyBanHangModel.FK_ThanhVien_ToTable" FromRole="ThanhVien" ToRole="LoaiThanhVien" />
+  </EntityType>
+  <Association Name="FK_BinhLuan_ToTable">
+    <End Type="QuanLyBanHangModel.ThanhVien" Role="ThanhVien" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.BinhLuan" Role="BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhVien">
+        <PropertyRef Name="MaThanhVien" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="MaThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BinhLuan_ToTable_1">
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.BinhLuan" Role="BinhLuan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="BinhLuan">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietDonDatHang_ToTable">
+    <End Type="QuanLyBanHangModel.DonDatHang" Role="DonDatHang" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.ChiTietDonDatHang" Role="ChiTietDonDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonDatHang">
+        <PropertyRef Name="MaDDH" />
+      </Principal>
+      <Dependent Role="ChiTietDonDatHang">
+        <PropertyRef Name="MaDDH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietDonDatHang_ToTable_1">
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.ChiTietDonDatHang" Role="ChiTietDonDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietDonDatHang">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietPN_ToTable">
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.ChiTietPN" Role="ChiTietPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietPN">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietPN_ToTable_1">
+    <End Type="QuanLyBanHangModel.PhieuNhap" Role="PhieuNhap" Multiplicity="0..1" />
+    <End Type="QuanLyBanHangModel.ChiTietPN" Role="ChiTietPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhap">
+        <PropertyRef Name="MaPN" />
+      </Principal>
+      <Dependent Role="ChiTietPN">
+        <PropertyRef Name="MaPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Đo_ToTable">
+    <End Type="QuanLyBanHangModel.KhachHang" Role="KhachHang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.DonDatHang" Role="DonDatHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="DonDatHang">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_ToTable">
+    <End Type="QuanLyBanHangModel.ThanhVien" Role="ThanhVien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.KhachHang" Role="KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhVien">
+        <PropertyRef Name="MaThanhVien" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="MaThanhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_ToTable">
+    <End Type="QuanLyBanHangModel.LoaiSanPham" Role="LoaiSanPham" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSanPham">
+        <PropertyRef Name="MaLoaiSP" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaLoaiSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThanhVien_ToTable">
+    <End Type="QuanLyBanHangModel.LoaiThanhVien" Role="LoaiThanhVien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.ThanhVien" Role="ThanhVien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiThanhVien">
+        <PropertyRef Name="MaLoaiTV" />
+      </Principal>
+      <Dependent Role="ThanhVien">
+        <PropertyRef Name="MaLoaiTV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuNhap_ToTable">
+    <End Type="QuanLyBanHangModel.NhaCungCap" Role="NhaCungCap" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.PhieuNhap" Role="PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCap">
+        <PropertyRef Name="MaNCC" />
+      </Principal>
+      <Dependent Role="PhieuNhap">
+        <PropertyRef Name="MaNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_ToTable_1">
+    <End Type="QuanLyBanHangModel.NhaCungCap" Role="NhaCungCap" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCap">
+        <PropertyRef Name="MaNCC" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_ToTable_2">
+    <End Type="QuanLyBanHangModel.NhaSanXuat" Role="NhaSanXuat" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="QuanLyBanHangModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaSanXuat">
+        <PropertyRef Name="MaNSX" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaNSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

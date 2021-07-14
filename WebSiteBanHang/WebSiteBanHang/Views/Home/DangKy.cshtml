@@ -1,0 +1,138 @@
+﻿@using CaptchaMvc.HtmlHelpers;
+@using CaptchaMvc;
+
+
+@using WebSiteBanHang.Models;
+
+@model ThanhVien
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Layout/RegisterLayout.cshtml";
+}
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+
+@*.form-group{
+        margin-top:10px;
+        width:100%;
+    }*@
+    .dang-ky {
+        width:90%;
+    }
+    .col-md-6 span {
+        display: block;
+        font-size: 20px;
+        padding: 5px 5px;
+    }
+    .dang-ky form input {
+        color:black;
+        padding:4px 0 4px 0 4px;
+
+    }
+    .dang-ky form {
+        display:flex;
+        text-align:center;
+        margin-top:3.4em;
+        width:100%;
+    }
+    .dang-ky form span {
+        text-align:left;
+    }
+    table tr{
+        height:100px;
+    }
+    table input{
+        font-size:30px;
+    }
+    .tieuDe1 {
+        color:white;font-weight:600;text-align:center;display:block;margin-top:-100px;
+    }
+    .tieuDe {
+       display:block; margin-bottom:2em;font-size:30px;font-family:'Segoe UI';font-weight:600;
+    }
+    #990c2e7b996b4ed09c166285acf0f725{
+        display:block;
+    }
+</style>
+
+
+<h1 class="tieuDe1">Đăng ký thành viên</h1>
+<div class="dang-ky" style="display: flex; width: 100%; justify-content: space-around">
+
+    @using (Html.BeginForm(new { @class = "form-group" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-6" style="border-right:2px solid white">
+            <h3 class="tieuDe">THÔNG TIN CÁ NHÂN</h3>
+            @Html.ValidationSummary(true)
+            <div style="width:100%;margin-bottom:1.2em;float:left;">
+
+                <table style="text-align:right;width:100%;height:90%;">
+                    <tr>
+                        <td>@Html.LabelFor(model => model.TaiKhoan):</td>
+                        <td>@Html.TextBoxFor(model => model.TaiKhoan)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.HoTen):</td>
+                        <td>@Html.TextBoxFor(model => model.HoTen)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.DiaChi):</td>
+                        <td> @Html.TextBoxFor(model => model.DiaChi)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Email):</td>
+                        <td>@Html.TextBoxFor(model => model.Email)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.SoDienThoai):</td>
+                        <td>@Html.TextBoxFor(model => model.SoDienThoai)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3 class="tieuDe">THÔNG TIN ĐĂNG NHẬP</h3>
+            @Html.ValidationSummary(true)
+            <div style="width:100%;margin-bottom:1.2em;float:left;">
+
+                <table style="text-align:right;width:100%;height:90%;">
+                    <tr>
+                        <td>@Html.LabelFor(model => model.MatKhau):</td>
+                        <td> @Html.PasswordFor(model => model.MatKhau)</td>
+                    </tr>
+                    <tr>
+                        <td>Reconfirm MK: </td>
+                        <td>@Html.Password("NhapLaiMatKhau")</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(model => model.CauHoi) bảo mật:</td>
+                        <td style="color: black;">@Html.DropDownList("CauHoi")</td>
+                    </tr>
+                    <tr>
+                        <td>Câu trả lời:</td>
+                        <td>@Html.TextBox("CauTraLoi")</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">@Html.MathCaptcha()</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center;">
+                            <input type="submit" value="Xác nhận" style="margin-top: 41px;margin-left: 75px;" />
+                        </td>
+                    </tr>
+                    
+                </table>
+
+            </div>
+        </div>
+
+        @*<div class="clearfix"> </div>*@
+    }
+</div>
+<h1 style="color:red;text-align:center;">@ViewBag.ThongBao</h1>

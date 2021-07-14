@@ -1,0 +1,132 @@
+﻿@using WebSiteBanHang.Models;
+
+@model List<ItemGioHang>
+
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+
+}
+<div class="col-md-9 product-price1">
+    @if (Model == null || Model.Count <= 0)
+    {
+        <h1 style="color:red;">Giỏ hàng rỗng</h1>
+    }
+    else
+    {
+        <table class="table" border="1" style="font-family:'Segoe UI';font-size:18px;text-align:center;">
+            <tr style="text-align:center;color:red;">
+                <td>Mã sản phẩm</td>
+                <td>Tên sản phẩm</td>
+                <td>Hình ảnh</td>
+                <td>Số lượng</td>
+                <td>Đơn giá</td>
+                <td>Thành tiền</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.MaSP</td>
+                    <td style="text-align:left;">@item.TenSP</td>
+                    <td style="text-align:left;"><img src="@Url.Content("~/Content/HinhAnh/" + item.HinhAnh)" style="width:150px;height:85px" /></td>
+                    <td>@item.SoLuong</td>
+                    <td>@item.DonGia.ToString("#,##")</td>
+                    <td style="font-weight:600;color:red;">@item.ThanhTien.ToString("#,##")</td>
+                    <td style="color:black;">
+                        @Html.ActionLink("Sửa", "SuaGioHang", new { @MaSP = item.MaSP })
+                        @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })
+                    </td>
+                </tr>
+            }
+        </table>
+
+        using (Html.BeginForm("DatHang", "GioHang"))
+        {
+            if (Session["TaiKhoan"] == null)
+            {
+                <div class="ThongTinMuaHang">
+                    <table align="center" class="table" style="font-family:'Segoe UI'">
+                        <tr>
+                            <td style="font-size: 27px;color: red;font-weight: 600;" align="center" colspan="2"><b>Thông tin khách hàng</b></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Họ tên
+                            </td>
+                            <td>
+                                @Html.TextBox("TenKH")
+                                <p style="color:red" id="TB_TenKH"></p>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Địa chỉ</td>
+                            <td>
+                                @Html.TextArea("DiaChi")
+                                <p style="color:red" id="TB_DiaChi"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>@Html.TextBox("Email")</td>
+                        </tr>
+                        <tr>
+                            <td>Số điện thoại</td>
+                            <td>@Html.TextBox("SoDienThoai")</td>
+                        </tr>
+                        @*<tr>
+                                <td></td>
+                                <td>@Html.Hidden("MaThanhVien", 1)</td>
+                            </tr>*@
+                    </table>
+                </div>
+                <div class="divDatHang" style="text-align: right;">
+                    <input type="submit" class="btn btn-danger" value="Đặt hàng" id="btnDatHang" />
+                    @Html.ActionLink("Mua tiếp", "Index", "Home", new { @class = "btn btn-success",style ="padding:6px;width:14%;font-size: 26px;font-weight: 600;"})
+
+                                            </div>
+                }
+            <script>
+                $("#btnDatHang").click(function () {
+                            var error = 0;
+                            if ($("#TenKH").val() == "") {
+                        $("#TB_TenKH").text("Tên kh không được bỏ trống");
+                                // Ngăn sự kiện submit đến server
+                                error++;
+                            } else {
+
+                        $("#TB_TenKH").text("");
+                            }
+
+                            if ($("#DiaChi").val() == "") {
+                        $("#TB_DiaChi").text("Địa chỉ không được bỏ trống");
+                                // Ngăn sự kiện submit đến server
+                                error++;
+                            } else {
+
+                        $("#TB_DiaChi").text("");
+                            }
+
+                            if (error != 0) {
+                                // Ngăn sự kiện submit đến server
+                                return false;
+                            }
+
+                        })
+            </script>
+
+        }
+        @*Thiết kế form lưu thông tin khác  *@
+    }
+</div>
+@*Kiểm tra validation thông qua Jquery*@
+
+
+<style>
+    input[type="submit"] {
+        padding: 7px;
+        margin: 0;
+    }
+</style>
+
+

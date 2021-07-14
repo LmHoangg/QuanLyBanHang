@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebSiteBanHang.Models.KhachHang>
+    }
+@{
+    ViewBag.Title = "Index";
+}
+
+<div>
+    <table>
+        <tr>
+            <td>Mã khách hàng</td>
+            <td>Tên khách hàng</td>
+            <td>Địa chỉ</td>
+            <td>Email</td>
+            <td>Số điện thoại</td>
+
+        </tr>
+        
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaKH</td>
+                <td>@item.TenKH</td>
+                <td>@item.DiaChi</td>
+                <td>@item.Email</td>
+                <td>@item.SoDienThoai</td>
+            </tr>
+        }
+    </table>
+
+</div>
+

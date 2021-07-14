@@ -1,0 +1,29 @@
+﻿@using WebSiteBanHang.Models;
+@model List<ThanhVien>
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GroupDuLieu</title>
+</head>
+<body>
+    <div>
+        @foreach(var group in Model.GroupBy(n=>n.LoaiThanhVien))
+            {
+                <div>@group.Key.TenLoai</div>
+
+                foreach(var item in group)
+                {
+                    <p>@item.TaiKhoan</p>
+                }
+            }
+    </div>
+</body>
+</html>
